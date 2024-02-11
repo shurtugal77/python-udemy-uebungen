@@ -14,3 +14,7 @@ print("Your sick new band name is:\n" + bandName  +" " + "69")
 
 # Alternative print
 print(f"Your new sick band name is:\n{bandName}")
+
+# UwU Alternative
+print("So your pets name was {} and you grew up in {}".format(userCity, userPetName))
+print("So your pets name was {1} and you grew up in {0}".format(userCity, userPetName))
