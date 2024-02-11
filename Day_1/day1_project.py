@@ -10,4 +10,7 @@ userPetName = input("Now please give me your favorit name of a pet of yours\n")
 
 # Combine city name and pet name and show band name
 bandName = userCity + " " + userPetName
-print("Your sick new band name is:" + " " + bandName  +" " + "69")
+print("Your sick new band name is:\n" + bandName  +" " + "69")
+
+# Alternative print
+print(f"Your new sick band name is:\n{bandName}")
