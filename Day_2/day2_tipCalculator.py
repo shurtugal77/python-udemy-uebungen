@@ -13,4 +13,7 @@ peopleAmount = int(input("Wie viele Leute haben sich den Ranzen vollgehauen?\n")
 totalBill = tableBill * tipFloat
 billPerPerson = round(totalBill / peopleAmount, 2)
 
-print(f"Jeder von euch Nassbirnen zahlt jetzt bitte mal ${billPerPerson}")
+# Nachkommazahlen beim Runden
+formatedBillPerPerson = "{:.2f}".format(billPerPerson)
+
+print(f"Jeder von euch Nassbirnen zahlt jetzt bitte mal ${formatedBillPerPerson}")
