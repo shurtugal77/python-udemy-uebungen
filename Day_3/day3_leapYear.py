@@ -6,7 +6,9 @@ yearModulo100 = currentYear % 100
 yearModulo400 = currentYear % 400
 
 if yearModulo4 == 0:
+    #Leap year, now also check division by 100
     if yearModulo100 == 0:
+        #Not a leap year, now also check divison by 400
         if yearModulo400 == 0:
             print(f"The year {currentYear} is a leap year.")
         else:
