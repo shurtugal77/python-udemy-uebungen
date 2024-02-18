@@ -9,11 +9,11 @@ intBMI = int(BMI)
 print(f"Dein BMI ist {BMI} bzw. gerundet {intBMI}")
 
 
-if floatBMI < 18.5:
+if floatBMI <= 18.5:
     print("You are underweight")
-elif floatBMI < 25:
+elif floatBMI <= 25:
     print("You are normal weight")
-elif floatBMI < 30:
+elif floatBMI <= 30:
     print("You are slightly overweight")
 elif floatBMI <= 35:
     print("You are obese")
