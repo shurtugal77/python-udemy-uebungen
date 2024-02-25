@@ -16,8 +16,6 @@ elif position[1] == "2":
 elif position[1] == "3":
     tresNumber = 3
 
-#print(tresNumber)
-
 #Check column character
 tresChar = int()
 if position[0] == "A":
@@ -27,11 +25,8 @@ elif position[0] == "B":
 elif position[0] == "C":
     tresChar = 3
 
-#print(tresChar)
-
 #Set "X" on map
 map[tresNumber-1][tresChar-1] = "X"
-
 
 # Check map
 print(f"{line1}\n{line2}\n{line3}")
