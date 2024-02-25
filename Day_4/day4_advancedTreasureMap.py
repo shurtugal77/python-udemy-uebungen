@@ -5,7 +5,7 @@ line3 = [" ", " ", " "]
 map = [line1, line2, line3]
 
 print("Hiding your treasure! X marks the spot.")
-position = input("Wo soll der Schatz versteckt werden Captain?\n") # Where do you want to put the treasure
+position = input("Wo soll der Schatz versteckt werden Captain?\n").upper() # Where do you want to put the treasure
 
 #Check row number
 tresNumber = int()
