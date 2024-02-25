@@ -25,6 +25,13 @@ elif position[0] == "B":
 elif position[0] == "C":
     tresChar = 3
 
+# Lösung mit Index
+# letter = position[0].lower()
+# abc = ["a", "b", "c"]
+# letterIndex = abc.index(letter)
+# numberIndex = int(position[1]) - 1
+# map[numberIndex][letterIndex] = "X"
+
 #Set "X" on map
 map[tresNumber-1][tresChar-1] = "X"
 
