@@ -24,3 +24,5 @@ elif combinedChoices in userWinCondition:
     print("You win")
 elif combinedChoices in drawCondition:
     print("Draw - Play again.")
+
+# Draw vorher prüfen, dann nur auf loose oder win prüfen sonst Gegenteil ausgeben.
