@@ -54,4 +54,4 @@ print(getWord())
 #     return word
 
 
-print(obscureWord("Mahballz",["l", "a"]))
+# print(obscureWord("Mahballz",["l", "a"]))
