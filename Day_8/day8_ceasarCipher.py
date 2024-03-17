@@ -27,7 +27,7 @@ def encrypt(text, shift):
 
     for i in range (0, len(text)):
         if text[i] in alphabet:
-            encryptedText.append(shiftLetter((text[i]), shift))
+            encryptedText.append(shiftLetter((text[i]), shift)) #nicht schön zu lesen, besser auf mehrere Zeilen
         else:
             encryptedText.append(text[i])
 
