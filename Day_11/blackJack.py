@@ -30,8 +30,8 @@ def cardPicker():
     return cardPicker
 
 def sumOfCards(cardArray):
-    cardSum = sum(cardArray)
-    return cardSum
+    return sum(cardArray)
+    
 
 def mustDrawAnotherCard(cardSum):
     if cardSum >= 17:
@@ -40,6 +40,7 @@ def mustDrawAnotherCard(cardSum):
 
 def makeAceToOne(cardArray):
     counter = 0
+    # kann man auch mit .remove() machen
     for i in range(len(cardArray)):
         if cardArray[i] == 11 and counter < 1:
             cardArray[i] = 1
