@@ -17,17 +17,22 @@
 ## Cards are not removed from the deck as they are drawn.
 ## The computer is the dealer.
 import random
+import os
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
 playerCards = []
 computerCards = []
-autoRun = True
-
 
 def cardPicker():
     cardPicker = random.choice(cards)
     return cardPicker
+
+def drawACard(playerCardArray):
+    """Adds a card to the provided array. Calls the function 'cardpicker()' to get a random card."""
+    playerCardArray.append(cardPicker())
+    return playerCardArray
+
 
 def sumOfCards(cardArray):
     return sum(cardArray)
@@ -51,6 +56,7 @@ def makeAceToOne(cardArray):
 def playerChoiceEvaluation(choice):
     if choice == 'y':
             playerCards.append(cardPicker())
+            print(f"You drew a {playerCards[-1]}")
             print(f"Your cards: {playerCards}")
             print(sumOfCards(playerCards))
     else:
@@ -60,11 +66,15 @@ def playerChoiceEvaluation(choice):
 
 # Initial Deal (2 Cards each)
 for i in range(2):
-    playerCards.append(cardPicker())
-    computerCards.append(cardPicker())
+    drawACard(playerCards)
+    drawACard(computerCards)
+
+print(f"Computers' first card: {computerCards[0]}")
+
 
 autoRun = True
-gameResult = ''
+computerTurn = False
+playerResult = ''
 
 # Player chooses cards
 while autoRun == True:
@@ -73,71 +83,99 @@ while autoRun == True:
     if playerSum > 21 and 11 in playerCards:
         input("You have an 11 in your deck - attempting to reduce card size - Continue with Enter")
         playerCards = makeAceToOne(playerCards)
+        playerSum = sumOfCards(playerCards)
     elif playerSum > 21:
-        gameResult = 'Lost'
+        playerResult = 'Lost'
         break
 
     if playerSum == 21:
-        gameResult = 'Blackjack'
+        playerResult = 'Blackjack'
         break
 
     # See your cards
     print(f"Your cards: {playerCards}")
-    print(sumOfCards(playerCards))
+    print(f"Sum of your cards: {playerSum}\n")
 
-
-    if mustDrawAnotherCard(playerSum):
-        input("You have to draw another card. Continue with 'Enter'. ")
-        playerCards.append(cardPicker())
-    else:
-        playerChoice = input("Do you want to draw another card? 'y' or 'n'? ").lower()
-        autoRun = playerChoiceEvaluation(playerChoice)
-        if autoRun == False:
-            gameResult = 'computerTurn'
-        
-if gameResult == 'Lost':
-    print(f"You have lost. Your card sum is {playerSum} with your cards: {playerCards}")
-elif gameResult == 'Blackjack':
-    print(f"You won with a Blackjack! Your card sum is {playerSum} with your cards: {playerCards}")
-elif gameResult == 'computerTurn':
-    print('Computer is now atempting black jack!')
+    # if mustDrawAnotherCard(playerSum):
+    #     input("You have to draw another card. Continue with 'Enter'. ")
+    #     drawACard(playerCards)
+    #     print(f"You drew a {playerCards[-1]}")
+    # else:
+    #     playerChoice = input("Do you want to draw another card? 'y' or 'n'? ").lower()
+    #     autoRun = playerChoiceEvaluation(playerChoice)
+    #     if autoRun == False: playerResult = 'computerTurn'
     
-    # Computer chooses cards
-    computerResult = ''
-    autoRun = True
-    while autoRun:
+    playerChoice = input("Do you want to draw another card? 'y' or 'n'? ").lower()
+
+    if playerChoice == 'y':
+        drawACard(playerCards)
+        print(f"You drew a {playerCards[-1]}")
+    else:
+        autoRun = playerChoiceEvaluation(playerChoice)
+        if autoRun == False: playerResult = 'computerTurn'
+
+
+if playerResult == 'Lost':
+    print(f"AUTODEFEAT: You have lost. Your card sum is {playerSum} with your cards: {playerCards}")
+
+elif playerResult == 'Blackjack':
+    print(f"AUTOWIN: You won with a Blackjack! Your card sum is {playerSum} with your cards: {playerCards}")
+
+elif playerResult == 'computerTurn':
+    computerTurn = True
+    print("Your turn is over: It's the computers turn now!\n")
+
+# Computer chooses cards
+computerResult = ''
+while computerTurn:
+    computerSum = sumOfCards(computerCards)
+
+    if computerSum > 21 and 11 in computerCards:
+        input("Computer has an 11 in your deck - attempting to reduce card size - Continue with Enter")
+        computerCards = makeAceToOne(computerCards)
         computerSum = sumOfCards(computerCards)
+    elif computerSum > 21:
+        computerResult = 'Lost'
+        break
 
-        if computerSum > 21 and 11 in computerCards:
-            input("Computer has an 11 in your deck - attempting to reduce card size - Continue with Enter")
-            computerCards = makeAceToOne(computerCards)
-        elif computerSum > 21:
-            computerResult = 'Lost'
-            break
+    if computerSum == 21:
+        computerResult = 'Blackjack'
+        break
+    
+    # Wann entscheiden wir uns für ein draw?
+    if computerSum == playerSum and playerSum == 20:
+        computerResult = 'Draw'
+        break
 
-        if computerSum == 21:
-            computerResult = 'Blackjack'
-            break
-        
-        # Wann entscheiden wir uns für ein draw?
-        if computerSum == playerSum and playerSum == 20:
-            computerResult = 'Draw'
-            break
+    # See computer
+    print(f"Computer cards: {computerCards}")
+    print(f"Sum of computers' cards: {computerSum}")
 
-        # See computer
-        print(f"Computer cards: {computerCards}")
-        print(computerSum)
+    if mustDrawAnotherCard(computerSum):
+        input("Computer has to draw another card. Continue with 'Enter'. \n")
+        drawACard(computerCards)
+    elif computerSum < playerSum:
+        drawACard(computerCards)
+    elif computerSum > playerSum:
+        computerTurn = False
+        computerResult = 'Computer won over player'
 
-        if mustDrawAnotherCard(computerSum):
-            input("Computer has to draw another card. Continue with 'Enter'. ")
-            computerCards.append(cardPicker())
-        elif computerSum < playerSum:
-            computerCards.append(cardPicker())
-        elif computerSum > playerSum:
-            autoRun = False
-            computerResult = 'Computer won over player'
+if computerResult == 'Computer won over player':
+    print(f"Computer had more eyes than you: {computerSum} | {computerCards} - YOU LOST! Player: {playerSum} | {playerCards}")
 
-    print(f"Computer: {computerResult}. {computerSum} {computerCards}")
+elif computerResult == 'Draw':
+    print(f"It's a draw - WIP. Computer: {computerSum} | {computerCards}. Player: {playerSum} | {playerCards}")
+
+elif computerResult == 'Lost':
+    print(f"Computer had more than 21 and lost with {computerSum} | {computerCards} - YOU WON! Player: {playerSum} | {playerCards}")
+
+elif computerResult == 'Blackjack':
+    print(f"Wow the computer was lucky enough to get a Blackjack! {computerSum} | {computerCards} - YOU LOST!")
+
+
+
+
+
 
 # exit while
     # Check ob player gegen computer verliert cards vs cards
