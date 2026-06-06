@@ -172,3 +172,16 @@ sortlist = ["orange", "mango", "kiwi", "pineapple", "banana"]
 sortlist.reverse()
 print(sortlist)
 
+# copy lists
+sourceList = ["apple", "banana", "cherry"]
+copyList = sourceList.copy()
+print(copyList)
+
+# Alternate way with list()
+sourceList = ["apple", "banana", "cherry"]
+myList = list(sourceList)
+print(myList)
+
+# Alternate way with slice operator
+myList = sourceList[:]
+print(myList)
