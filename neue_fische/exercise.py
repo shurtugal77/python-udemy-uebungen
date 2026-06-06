@@ -40,3 +40,42 @@ checkList = ["apple", "banana", "cherry"]
 if "apple" in checkList:
     print("Ja Junge, dat is dabei")
 
+
+# Change items in lists
+thisList = ["rot", "blau", "grün", "gelb", "orange", "lila", "schwarz"]
+thisList[1:4] = ["lila", "buchweizen", "samuel"]
+print(thisList)
+
+
+# Append list elements
+thisList.append("UwU")
+print(thisList)
+
+
+# Extend a list with another list
+numberList = ["1", "2", "3", "4", "5"]
+thisList.extend(numberList)
+print(thisList)
+
+
+# Remove elements of a list
+thisList.remove("UwU")
+print(thisList)
+
+
+# Remove elements with pop
+tolleListe = ["nudeln", "eier", "gurken", "erbsen"]
+tolleListe.pop()
+print(tolleListe)
+
+# Remove items with del
+del tolleListe[0]
+print(tolleListe)
+
+# Delete entire list
+del  tolleListe
+
+# Clear a list
+einkaufsListe = ["eier", "mehl", "zucker", "salami"]
+einkaufsListe.clear()
+print(einkaufsListe)
