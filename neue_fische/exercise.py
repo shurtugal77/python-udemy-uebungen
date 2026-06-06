@@ -79,3 +79,66 @@ del  tolleListe
 einkaufsListe = ["eier", "mehl", "zucker", "salami"]
 einkaufsListe.clear()
 print(einkaufsListe)
+
+
+# Loop throug a list
+einkaufsListe = ["eier", "mehl", "zucker", "salami"]
+for x in einkaufsListe:
+    print(x)
+
+print(" ")
+# Loop with len/range
+for i in range(len(einkaufsListe)):
+    print(einkaufsListe[i])
+
+print(" ")
+# Loop with while
+einkaufsListe = ["eier", "mehl", "zucker", "salami"]
+i = 0
+while i < len(einkaufsListe):
+    print(einkaufsListe[i])
+    i += 1
+
+
+# List comprehension
+einkaufsListe = ["eier", "mehl", "zucker", "salami"]
+[print(x) for x in einkaufsListe]
+
+
+# List comprehension example
+# Traditional
+fruits = fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+newlist = []
+
+for x in fruits:
+    if "a" in x:
+        newlist.append(x)
+
+print(newlist)
+
+# 1 Liner
+fruits = fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+newlist = [x for x in fruits if "a" in x]
+print(newlist)
+
+
+# List comprehension with iterable examples
+newlist = [x for x in range(10)]
+print(newlist)
+
+# With condition - only numbers smaller than 5
+newlist = [x for x in range(10) if x < 5]
+print(newlist)
+
+
+# Manipulate expression
+newlist = [x.upper() for x in fruits]
+print(newlist)
+
+
+#Condition in expression
+# Only output fruits other than "banana" - replace "banana" with "orange"
+newlist = [x if x != "banana" else "orange" for x in fruits]
+print(newlist)
+
+
