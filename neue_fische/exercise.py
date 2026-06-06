@@ -142,3 +142,33 @@ newlist = [x if x != "banana" else "orange" for x in fruits]
 print(newlist)
 
 
+# Sort list
+sortlist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+sortlist.sort()
+print(sortlist)
+#Reverse sort
+sortlist.sort(reverse=True)
+print(sortlist)
+
+
+# Create custom sorting function
+# Returns absolute number, sorting with lowest number first
+def mySortingFunction(n):
+    return abs(n - 50)
+
+soManyNumbers = [100, 50, 65, 82, 23]
+soManyNumbers.sort(key = mySortingFunction)
+print(soManyNumbers)
+
+
+# Case insensitive sorting
+insensList = ["banana", "Orange", "Kiwi", "cherry"]
+insensList.sort(key = str.lower)
+print(insensList)
+
+
+# Reverse Sorting
+sortlist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+sortlist.reverse()
+print(sortlist)
+
