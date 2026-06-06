@@ -205,3 +205,81 @@ print(list1)
 
 
 # conditional statements
+a = 33
+b = 200
+if b > a:
+    print("b is greater than a")
+
+# If with bool
+isLoggedIn = True
+if isLoggedIn:
+    print("Was geht?")
+
+# Elif
+a = 33
+b = 33
+if b > a:
+    print("B größer A")
+elif a == b:
+    print("beide gleich")
+
+# Multi elif
+score = 75
+
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+elif score >= 60:
+    print("Grade: D")
+
+
+# Short if
+a = 5
+b = 2
+if a > b: print("a ist größer")
+
+# Short if with else
+a = 2
+b = 330
+print("A") if a > b else print("B")
+
+# if else variables
+a = 10
+b = 20
+bigger = a if a > b else b
+print("Bigger is", bigger)
+
+# Multiconditions one line
+a = 330
+b = 330
+print("A") if a > b else print("=") if a == b else print("B")
+
+# Logical operators
+a = 200
+b = 33
+c = 500
+if a > b and c > a:
+    print("Both conditions are true")
+
+a = 200
+b = 33
+c = 500
+if a > b or a > c:
+    print("At least one of the conditions is true")
+
+a = 33
+b = 200
+if not a > b:
+    print("a is NOT greater than b")
+
+
+# Combining logical operators
+age = 25
+isStudent = False
+hasDiscountCode = True
+
+if (age < 18 or age > 65) and not isStudent or hasDiscountCode:
+    print("Discount applies!")
