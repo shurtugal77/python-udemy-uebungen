@@ -185,3 +185,23 @@ print(myList)
 # Alternate way with slice operator
 myList = sourceList[:]
 print(myList)
+
+# Join lists easy
+list1 = ["a", "b", "c"]
+list2 = [1, 2, 3]
+list3 = list1 + list2
+print(list3)
+
+# Join with append()
+for x in list2:
+    list1.append(x)
+print(list1)
+
+# Join with extend()
+list1 = ["a", "b", "c"]
+list2 = [1, 2, 3]
+list1.extend(list2)
+print(list1)
+
+
+# conditional statements
