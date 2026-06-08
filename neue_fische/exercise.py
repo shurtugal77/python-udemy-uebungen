@@ -358,4 +358,33 @@ else:
 for x in "banana":
     print(x)
 
-''
+# For loop with break
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+    print(x)
+    if x == "banana":
+        break
+
+# For with continue
+for x in fruits:
+    if x == "banana":
+        continue
+    print(x)
+
+# For and range(custom start, end, step)
+for x in range(2, 30, 2):
+    print(x)
+
+# For with else:
+for x in range(6):
+    print(x)
+else:
+    print("Finally done!")
+
+# Nested for
+adjectives = ["red", "big", "nice"]
+fruits = ["apple", "banana", "cherry"]
+
+for x in adjectives:
+    for y in fruits:
+        print(x, y)
