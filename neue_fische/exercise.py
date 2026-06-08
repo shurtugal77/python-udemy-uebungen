@@ -283,3 +283,79 @@ hasDiscountCode = True
 
 if (age < 18 or age > 65) and not isStudent or hasDiscountCode:
     print("Discount applies!")
+
+# Nested if statements
+x = 41
+
+if x > 10:
+    print("Above ten")
+    if x > 20:
+        print("Above 20!")
+    else:
+        print("but not above 20!")
+
+# Multiple levels if nesting
+score = 85
+attendance = 90
+submitted = True
+
+if score >= 60:
+    if attendance >= 80:
+        if submitted:
+            print("Pass with good standing")
+        else:
+            print("Pass but missing assignment")
+    else:
+        print("Pass but low attendance")
+else:
+    print("Fail")
+
+# Refactor multiple levels with logical operators
+temperature = 25
+isSunny = True
+
+if temperature > 20:
+    if isSunny:
+        print("Nice day for fishing ain't it")
+
+# Same example with and
+if temperature > 20 and isSunny:
+    print("Nice day for fishing ain't it")
+
+
+# Pass statement
+a = 33
+b = 200
+
+if b > a:
+    pass
+
+# While loop with break
+i = 1
+while i < 6:
+    print(i)
+    if i == 3:
+        break
+    i += 1
+
+# While with continue
+i = 0
+while i < 6:
+    i += 1
+    if i == 3:
+        continue
+    print(i)
+
+# While with else
+anzahlPfannkuchen = 0
+while anzahlPfannkuchen < 10:
+    print("Pfannkuchen:" + str(anzahlPfannkuchen))
+    anzahlPfannkuchen += 1
+else:
+    print("Wir haben mindestens 10 Pfannkuchen")
+
+# For loop with string
+for x in "banana":
+    print(x)
+
+''
