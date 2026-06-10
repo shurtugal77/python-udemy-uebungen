@@ -388,3 +388,91 @@ fruits = ["apple", "banana", "cherry"]
 for x in adjectives:
     for y in fruits:
         print(x, y)
+
+
+# Function example
+def fahrenheitToCelsius(fahrenheit):
+    return ((fahrenheit - 32) * 5) / 9
+
+print(fahrenheitToCelsius(77))
+
+# Argument vs parameter
+def kaffeeKochen(bohnen): #bohnen ist ein Parameter
+    return print(str(bohnen) + "x Heißer Kaffee")
+
+kaffeeKochen(200) #200 ist ein Argument
+
+
+# Standard parameter example
+def fragPicard(antwort = "fiese Fresse"):
+    print("Ey - ", antwort)
+
+fragPicard("Wie spät ist es?")
+fragPicard()
+
+# Key value arguments
+def tierNamen(animal, name):
+    print("Ich bin ein/e", animal)
+    print("Der name meines/r", animal + " ist:", name)
+
+tierNamen(animal="Giraffe", name="Superidiot")
+
+# Positional arguments - absichtlich vertauscht
+def my_function(animal, name):
+    print("I have a", animal)
+    print("My", animal + "'s name is", name)
+
+my_function("Buddy", "dog")  
+
+# Mixed arguments
+def exmapleFunc(animal, name, age):
+    print("I have a", age, "year old", animal, "named", name)
+
+exmapleFunc("dog", name="DeezNuts", age=69)
+
+
+# Datatypes in functions:
+def myFunction(fruits):
+    for fruit in fruits:
+        print(fruit)
+
+myFruits = ["cherry", "apple", "banana"]
+myFunction(myFruits)
+
+# Example - dictionary to a function
+def my_function(person):
+    print("Name:", person["name"])
+    print("Age:", person["age"])
+
+my_person = {"name": "Emil", "age": 25}
+my_function(my_person) 
+
+
+# Forcing positional arguments
+def forcedPositionalArguments(name, /):
+    print("Hi, mein Name ist", name)
+
+forcedPositionalArguments("Robert")
+
+
+# Forcing keyword arguments
+def forcedPositionalArguments(*, name):
+    print("Hi, mein Name ist", name)
+
+forcedPositionalArguments(name="Robert")
+
+
+# Mixed forced arguments
+def my_function(a, b, /, *, c, d):
+    return a + b + c + d
+
+result = my_function(5, 10, c = 15, d = 20)
+print(result) 
+
+
+# *args
+def ichWeißNochNicht(*items):
+    print("Ich habe 10", items[1])
+    print("Und auch 20", items[0]) #zweiter tuple Wert
+
+ichWeißNochNicht("Bananen", "Nüsse", "Himbeeren")
