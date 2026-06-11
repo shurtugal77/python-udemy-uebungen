@@ -476,3 +476,190 @@ def ichWeißNochNicht(*items):
     print("Und auch 20", items[0]) #zweiter tuple Wert
 
 ichWeißNochNicht("Bananen", "Nüsse", "Himbeeren")
+
+# args example with sum function
+def calculateMax(*numbers):
+    result = 0
+    for value in numbers:
+        result += value
+    return result
+
+print(calculateMax(1,2,3))
+print(calculateMax(10,5))
+print(calculateMax(10,205,30,4))
+
+# **Keywordarguments
+def sayName(**names):
+    print("Hello my name is " + names["fname"])
+
+sayName(fname = "Robert", lname = "Nuts")
+
+# Accessing keyword arguments (dictionary)
+def myFunction(**myvar):
+    print("Type", type(myvar))
+    print("Name:", myvar["name"])
+    print("Age:", myvar["age"])
+    print("All data:", myvar)
+
+myFunction(name = "Robert", age = 36, city = "Regensburg")
+
+# Combining regular arguments with **kwargs
+def printUserData(username, **details):
+    print("Username:", username)
+    print("Additional details:")
+    for key, value in details.items():
+        print(" ", key + ":", value)
+
+printUserData("robert420", age = 25, city = "Oslo", hobby = "coding")
+
+# Combining everything lol
+def getUserInfo(title, *args, **kwargs):
+    print("Title:", title)
+    print("Positional arguments:", args)
+    print("Keyword arguments:", kwargs)
+
+getUserInfo("Dr. Goaßmaß", "Robert", "Rebecca", age = 69, city = "Oslo")
+
+# Unpacking list arguments
+def summarize(a, b, c):
+    return a + b + c 
+
+numbers = [1, 2, 3]
+result = summarize(*numbers) # === summarize(1, 2, 3)
+print(result)
+
+# Unpacking dictionary arguments
+def getName(fname, lname):
+    print("Hello", fname, lname)
+
+personData = {"fname": "Robert", "lname": "Geißmeiß"}
+getName(**personData) # === getName(fname="Robert", lname="Geißmeiß")
+
+# Create global variable in function
+def localFunction():
+    global wowGlobal
+    wowGlobal = 300
+
+localFunction()
+print(wowGlobal)
+
+# Nonlocal variable in nested functions
+def function1():
+    x = 5
+    def function2():
+        nonlocal x
+        x = "deez"
+    function2()
+    return x
+
+print(function1())
+
+# Basic Decorator
+def changeCase(inputFunction):
+    def inner():
+        return inputFunction().upper()
+    return inner
+
+@changeCase
+def normalFunction():
+    return "Hallo - das ist klein aber wird groß"
+
+@changeCase
+def otherFunction():
+    return "Schreib das mal groß Junge!"
+
+print(normalFunction())
+print(otherFunction())
+
+
+# Decorators with arguments
+def changeCase(inputFunction):
+    def inner(x):                       # x = passed argument (name) to wrapper
+        return inputFunction(x).upper()
+    return inner
+
+@changeCase
+def sayHello(name):
+    return ("Hello " + name)
+
+print(sayHello("Robert"))
+
+# Secured Decorator
+def changeCase(inputFunction):
+    def inner(*args, **kwargs):
+        return inputFunction(*args, **kwargs).upper()
+    return inner
+
+@changeCase
+def sayHello(name):
+    return ("Hello " + name)
+
+print(sayHello("Secured Robert"))
+
+
+# Decorator with it's own arguments
+def changeCase(decoratorArgument):
+    def changeCase(inputFunction):
+        def inner():
+            if decoratorArgument == 1:
+                a = inputFunction().lower()
+            else:
+                a = inputFunction().upper()
+            return a
+        return inner
+    return changeCase
+
+@changeCase(1)
+def sayMyName():
+    return "HELLO LOWERCASE ROBERT"
+
+print(sayMyName())
+
+
+# Multiple decorators
+def changeCase(inputFunction):
+    def inner():
+        return inputFunction().upper()
+    return inner
+
+def addGreeting(inputFunction):
+    def inner():
+        return "Hello there " + inputFunction() + " Nice day for fishing, ain't it?!"
+    return inner
+    
+@changeCase
+@addGreeting
+def getName():
+    return "Robert"
+
+print(getName())
+
+# Accessing metadata of functions
+def metaDataTest():
+    return "Wow dis is cool"
+
+print(metaDataTest.__name__)
+
+
+# Preserving metadata
+import functools
+
+def changeCase(inputFunction):
+    @functools.wraps(inputFunction)
+    def inner():
+        return inputFunction().upper()
+    return inner
+
+@changeCase
+def greetMe():
+    return "Hello, have a nice day!"
+
+print (greetMe.__name__)
+
+
+# Lambda functions
+x = lambda a : a + 10
+print(x(5))
+
+x = lambda a,b : (a * b)+2
+print(x(5,10))
