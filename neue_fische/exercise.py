@@ -663,3 +663,46 @@ print(x(5))
 
 x = lambda a,b : (a * b)+2
 print(x(5,10))
+
+# Lambda function use case as anonymous function within a function
+def regularFunction(n):
+    return lambda a : a * n
+
+doubleMyInput = regularFunction(2)
+trippleMyInPut = regularFunction(3)
+
+print(doubleMyInput(11))
+print(trippleMyInPut(11))
+
+# Lambda with map()
+numbers = [1, 2, 3, 4, 5]
+doubled = list(map(lambda x : x * 2, numbers))
+print(doubled)
+
+# Lambda with filter()
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+odd_numbers = list(filter(lambda x: x % 2 != 0, numbers))
+print(odd_numbers)
+
+# Lambda with sorted()
+students = [
+    ("Emil", 25),
+    ("Tobias", 22),
+    ("Linus", 28)
+]
+
+sorted_students = sorted(students, key=lambda x : x[1])
+# sorts the list of tuples by the second element
+print(sorted_students)
+
+# Another sorted() examples
+words = [
+    "apple",
+    "pie",
+    "banana",
+    "cherry"
+]
+
+sorted_words = sorted(words, key=lambda x : len(x))
+# sorts the list based on its strings length
+print(sorted_words)
