@@ -706,3 +706,167 @@ words = [
 sorted_words = sorted(words, key=lambda x : len(x))
 # sorts the list based on its strings length
 print(sorted_words)
+
+
+# Recursion example counting down from 5
+def countdown(n):
+    if n <= 0:
+        print("Done!")
+    else:
+        print(n)
+        countdown(n - 1)
+
+countdown(5)
+
+# Recursion with base and recursive case commented
+def factorial(n):
+    # Base case
+    if n == 0 or n == 1:
+        return 1
+    # Recursive case
+    else:
+        return n * factorial(n - 1)
+    
+print(factorial(5))
+
+# Fibonacci Sequence
+# Eine Zahl ist die Summe der zwei vorhergehenden, Start mit 0 und 1
+def fibonacci(n):
+    if n <=1:
+        return n
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(7))
+
+# Recursion with lists
+# Calculate the sum of all elements in a listy
+def sumList(numbers):
+    if len(numbers) == 0:
+        return 0
+    else:
+        return numbers[0] + sumList(numbers[1:])
+
+myList = [1, 2, 3, 4, 5]
+print(sumList(myList))
+
+# Recursion with lists - find maximum value
+def findMax(numbers):
+    if len(numbers) == 1:
+        return numbers[0]
+    else:
+        maxOfRest = findMax(numbers[1:])
+        return numbers[0] if numbers[0] > maxOfRest else maxOfRest
+
+myList = [3, 7, 2, 9, 1]
+print(findMax(myList))
+
+import sys
+print(sys.getrecursionlimit())
+
+# Generator basic example
+def myGenerator():
+    yield 1
+    yield 2
+    yield 3
+
+for value in myGenerator():
+    print(value)
+
+print("")
+
+# Another generator example
+def countUpTo(n):
+    count = 1
+    while count <= n:
+        yield count
+        count += 1
+
+for num in countUpTo(5):
+    print(num)
+
+# Memory efficient generator
+def largeSequence(n):
+    for i in range(n):
+        yield i
+
+# This doesn't create a million numbers in memory
+gen = largeSequence(1000000)
+print(next(gen))
+print(next(gen))
+print(next(gen))
+
+# Generators with next
+def simpleGenerator():
+    yield "Robert"
+    yield "Rebecca"
+    yield "Samuel"
+
+gen = simpleGenerator()
+print(next(gen))
+print(next(gen))
+print(next(gen))
+
+# Generators exception testing
+def simple_gen():
+    yield 1
+    yield 2
+
+gen = simple_gen()
+print(next(gen))
+print(next(gen))
+#print(next(gen)) # This will raise StopIteration 
+
+
+# Generator Expressions
+# List comprehension for comparison
+listComp = [x * x for x in range(5)]
+print(listComp)
+
+# Generator expression - creates a generator
+genExp = (x * x for x in range(5))
+print(genExp)
+print(list(genExp))
+
+# Generator expression with "sum"
+# Calculate the sum of squares without creating a list
+total = sum(x * x for x in range(10))
+print(total)
+
+print("")
+
+# Fibonacci sequence generator - memory efficient
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b =  b, a + b
+#Get first 100 Fibonacci numbers
+gen = fibonacci()
+for _ in range(10):
+    print(next(gen))
+
+# Generator send()
+def echoGenerator():
+    while True:
+        received = yield
+        print("Received:", received)
+
+gen = echoGenerator()
+next(gen) # Prime the generator
+gen.send("Hello")
+gen.send("World")
+
+
+# Generator close()
+def myGen():
+    try:
+        yield 1
+        yield 2
+        yield 3
+    finally:
+        print("Generator closed")
+
+gen = myGen()
+print(next(gen))
+gen.close()
